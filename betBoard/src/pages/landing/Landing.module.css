@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+
+:root{
+    --primary-color: #0fbc20;
+    --secondary-color: #f0f0f0;
+    --text-color: #333;
+    --font-family: 'Roboto', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+.landingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/landingbetboardbackground.jpg') no-repeat center center fixed;
+    font-family: var(--font-family);
+    padding: 0;
+    margin: 0;
+}

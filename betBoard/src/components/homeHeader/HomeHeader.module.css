@@ -1,0 +1,69 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+
+:root{
+    --font-family: 'Roboto', sans-serif;
+}
+
+
+.homeHeader{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    height: 120px;
+    background: white;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #e3e3e3;
+}
+
+.homeHeaderTitle {
+    font-family: var(--font-family);
+    font-size: 2.6rem;
+    font-weight: 850;
+    color: #fff;
+    background: #0fbc20;
+    border-radius: 40px;
+    padding: 10px 32px;
+    text-align: left;
+    display: inline-block;
+    margin-left: 150px;
+}
+
+.headerActions {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+    align-items: center;
+    margin-right: 120px;
+}
+
+.loginButton {
+    color: black;
+    background: #fff;
+    border: #fff;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.registerButton {
+    background: transparent;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 40px;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
