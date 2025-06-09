@@ -23,7 +23,7 @@
 
 .homeHeaderTitle {
     font-family: var(--font-family);
-    font-size: 2.6rem;
+    font-size: 2.0rem;
     font-weight: 850;
     color: #fff;
     background: #0fbc20;
@@ -31,25 +31,39 @@
     padding: 10px 32px;
     text-align: left;
     display: inline-block;
-    margin-left: 150px;
+    margin-left: 80px;
+    cursor: pointer;
 }
 
 .headerActions {
     display: flex;
-    gap: 40px;
-    margin-left: auto;
     align-items: center;
-    margin-right: 120px;
+    margin-left: auto;
+    margin-right: 40px;
+    gap: 64px;
+}
+
+.menuGroup {
+    display: flex;
+    gap: 5px;
+    margin-right: 250px; 
+
+}
+
+.authGroup {
+    display: flex;
+    gap: 32px;
+    margin-right: 40px;
 }
 
 .loginButton {
     color: black;
-    background: #fff;
+    background: transparent;
     border: #fff;
     padding: 10px 32px;
     font-size: 1.1rem;
     font-family: var(--font-family);
-    font-weight: 700;
+    font-weight: 550;
     cursor: pointer;
 }
 
@@ -62,8 +76,20 @@
     padding: 10px 32px;
     font-size: 1.1rem;
     font-family: var(--font-family);
-    font-weight: 700;
+    font-weight: 550;
     cursor: pointer;
 }
 
-
+.premiumButton,
+.helpButton,
+.aboutUsButton {
+    background: transparent;
+    color: #111;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 350;
+    cursor: pointer;
+}

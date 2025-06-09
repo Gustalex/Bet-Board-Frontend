@@ -7,14 +7,6 @@ const Landing = () => {
 
     const navigate = useNavigate();
     
-    const handleLoginClick = () => {
-        navigate('/login');
-    };
-    
-    const handleRegisterClick = () => {
-        navigate('/register');
-    };
-    
     return (
         <div className={styles.landingContainer}>
             <HomeHeader />
