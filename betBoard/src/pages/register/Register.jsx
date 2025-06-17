@@ -1,9 +1,11 @@
 import styles from './Register.module.css';
 import { useState } from 'react';
 import AuthController from '../../controllers/authController';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaHome } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         full_name: '',
         cpf: '',
@@ -102,6 +104,11 @@ const Register = () => {
                 confirm_password: '',
                 phone: '',
             });
+            
+            setTimeout(() => {
+                navigate('/login');
+            }, 500);
+            
         } catch (err) {
             setError('Erro ao registrar. Verifique os dados e tente novamente.');
         } finally {
@@ -117,95 +124,130 @@ const Register = () => {
         setShowConfirmPassword((prev) => !prev);
     };
 
+    const handleHomeClick = () => {
+        navigate('/');
+    };
     return (
-        <div className={styles.registerContainer}>
-            <form className={styles.registerForm} onSubmit={handleSubmit}>
-                <div className={styles.formLeft}>
-                    <input
-                        type="text"
-                        name="full_name"
-                        placeholder="Nome completo"
-                        className={styles.inputField}
-                        value={formData.full_name}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <input
-                        type="text"
-                        name="cpf"
-                        placeholder="CPF"
-                        className={styles.inputField}
-                        value={formData.cpf}
-                        onChange={handleCPFChange}
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        className={styles.inputField}
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Telefone"
-                        className={styles.inputField}
-                        value={formData.phone}
-                        onChange={handlePhoneChange}
-                    />
-                    <div className={styles.passwordInputWrapper}>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            placeholder="Senha"
-                            className={styles.inputField}
-                            value={formData.password}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <span
-                            className={styles.passwordToggleIcon}
-                            onClick={togglePasswordVisibility}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </span>
+        <div className={`${styles.registerContainer}`}>
+            <button 
+                className={styles.homeButton} 
+                onClick={handleHomeClick}
+                type="button"
+            >
+                <FaHome />
+            </button>
+            
+            <div className="container-fluid p-0">
+                <div className="row justify-content-center align-items-center min-vh-100 m-0">
+                    <div className="col-auto">
+                        <form className={`${styles.registerForm} row g-0`} onSubmit={handleSubmit}>
+                            <div className={`col-12 col-lg-7 ${styles.formLeft}`}>
+                                <h2 className={styles.registerTitle}>Criar Conta</h2>
+                                
+                                <div className="mb-3">
+                                    <input
+                                        type="text"
+                                        name="full_name"
+                                        placeholder="Nome completo"
+                                        className={styles.inputField}
+                                        value={formData.full_name}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                
+                                <div className="mb-3">
+                                    <input
+                                        type="text"
+                                        name="cpf"
+                                        placeholder="CPF"
+                                        className={styles.inputField}
+                                        value={formData.cpf}
+                                        onChange={handleCPFChange}
+                                        required
+                                    />
+                                </div>
+                                
+                                <div className="mb-3">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="E-mail"
+                                        className={styles.inputField}
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                
+                                <div className="mb-3">
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Telefone"
+                                        className={styles.inputField}
+                                        value={formData.phone}
+                                        onChange={handlePhoneChange}
+                                    />
+                                </div>
+                                
+                                <div className={`mb-3 ${styles.passwordInputWrapper}`}>
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        name="password"
+                                        placeholder="Senha"
+                                        className={styles.inputField}
+                                        value={formData.password}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <span
+                                        className={styles.passwordToggleIcon}
+                                        onClick={togglePasswordVisibility}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
+                                </div>
+                                
+                                <div className={`mb-3 ${styles.passwordInputWrapper}`}>
+                                    <input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        name="confirm_password"
+                                        placeholder="Confirme a senha"
+                                        className={styles.inputField}
+                                        value={formData.confirm_password}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <span
+                                        className={styles.passwordToggleIcon}
+                                        onClick={toggleConfirmPasswordVisibility}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
+                                </div>
+                                
+                                {error && <div className={`${styles.formMessage} mb-3`} style={{ color: '#ff5555' }}>{error}</div>}
+                                {success && <div className={`${styles.formMessage} mb-3`} style={{ color: '#0fbc20' }}>{success}</div>}
+                                
+                                <button type="submit" className={`${styles.registerButton} w-100`} disabled={loading}>
+                                    {loading ? 'Registrando...' : 'Registrar'}
+                                </button>
+                            </div>
+                            
+                            <div className={`col-12 col-lg-5 ${styles.formRight}`}>
+                                <div className={styles.formRightContent}>
+                                    <span className={styles.formRightText}>
+                                        Bem-vindo ao BetBoard! <br /> Faça seu cadastro e aproveite a experiência.
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div className={styles.passwordInputWrapper}>
-                        <input
-                            type={showConfirmPassword ? "text" : "password"}
-                            name="confirm_password"
-                            placeholder="Confirme a senha"
-                            className={styles.inputField}
-                            value={formData.confirm_password}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <span
-                            className={styles.passwordToggleIcon}
-                            onClick={toggleConfirmPasswordVisibility}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                        </span>
-                    </div>
-                    {error && <div className={styles.formMessage} style={{ color: '#ff5555' }}>{error}</div>}
-                    {success && <div className={styles.formMessage} style={{ color: '#0fbc20' }}>{success}</div>}
-                    <button type="submit" className={styles.registerButton} disabled={loading}>
-                        {loading ? 'Registrando...' : 'Registrar'}
-                    </button>
                 </div>
-                <div className={styles.formRight}>
-                    <div className={styles.formRightContent}>
-                        <span className={styles.formRightText}>
-                            Bem-vindo ao BetBoard! <br /> Faça seu cadastro e aproveite a experiência.
-                        </span>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     );
 };

@@ -4,21 +4,12 @@
     --font-family: 'Roboto', sans-serif;
 }
 
-
 .homeHeader{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 20px;
     height: 120px;
     background: white;
     color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
     border-bottom: 2px solid #e3e3e3;
+    padding: 0 20px;
 }
 
 .homeHeaderTitle {
@@ -30,42 +21,27 @@
     border-radius: 40px;
     padding: 10px 32px;
     text-align: left;
-    display: flex;           /* Flex para alinhar ícone e texto */
+    display: flex;
     align-items: center;
-    gap: 12px;               /* Espaço entre ícone e texto */
-    margin-left: 80px;
+    gap: 12px;
     cursor: pointer;
     min-width: 0;
     overflow: hidden;
     white-space: nowrap;
     flex-shrink: 0;
+    margin: 0 !important;
+    transition: none !important;
+}
+
+.homeHeaderTitle:hover {
+    background: #0fbc20 !important; 
+    color: #fff !important; 
 }
 
 .logoIcon {
     width: 42px;
     height: 42px;
     flex-shrink: 0;
-}
-
-.headerActions {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 40px;
-    gap: 64px;
-}
-
-.menuGroup {
-    display: flex;
-    gap: 5px;
-    margin-right: 250px; 
-
-}
-
-.authGroup {
-    display: flex;
-    gap: 32px;
-    margin-right: 40px;
 }
 
 .loginButton {
@@ -78,7 +54,6 @@
     font-weight: 550;
     cursor: pointer;
 }
-
 
 .registerButton {
     background: transparent;
@@ -106,86 +81,64 @@
     cursor: pointer;
 }
 
-@media (max-width: 1330px) {
+@media (max-width: 991.98px) { 
+    .homeHeader {
+        height: auto;
+        min-height: 80px;
+    }
+    
     .homeHeaderTitle {
         font-size: 1.5rem;
-        padding: 8px 16px;
-        margin-left: 24px;
+        padding: 8px 20px;
         gap: 8px;
     }
+    
     .logoIcon {
         width: 32px;
         height: 32px;
     }
 }
 
-@media (max-width: 1100px) {
-    .menuGroup {
-        margin-right: 40px;
-        gap: 2px;
-    }
-    .authGroup {
-        margin-right: 10px;
-        gap: 12px;
-    }
-    .headerActions {
-        gap: 24px;
-        margin-right: 10px;
-    }
+@media (max-width: 767.98px) { 
     .homeHeaderTitle {
-        margin-left: 10px;
-        font-size: 1.1rem;
-        padding: 6px 8px;
-        gap: 6px;
-    }
-    .logoIcon {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-@media (max-width: 900px) {
-    .homeHeader {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        align-items: flex-start;
-    }
-
-    .homeHeaderTitle {
-        margin-left: 0;
-        margin-bottom: 12px;
         font-size: 1.2rem;
-        padding: 6px 10px;
+        padding: 6px 16px;
         gap: 6px;
     }
+    
     .logoIcon {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
     }
-}
-
-@media (max-width: 600px) {
-    .homeHeader {
-        padding: 5px;
-    }
-
-    .homeHeaderTitle {
-        font-size: 1.1rem;
-        padding: 6px 10px;
-        gap: 6px;
-    }
-
-    .headerActions {
-        gap: 12px;
-    }
-
+    
     .premiumButton,
     .helpButton,
     .aboutUsButton,
     .loginButton,
     .registerButton {
-        padding: 6px 8px;
-        font-size: 0.95rem; 
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .homeHeaderTitle {
+        font-size: 1.1rem;
+        padding: 6px 12px;
+        gap: 4px;
+    }
+    
+    .logoIcon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .premiumButton,
+    .helpButton,
+    .aboutUsButton,
+    .loginButton,
+    .registerButton {
+        padding: 6px 16px;
+        font-size: 0.9rem;
     }
 }

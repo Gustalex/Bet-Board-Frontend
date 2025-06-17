@@ -8,7 +8,7 @@
     --form-bg: rgba(255,255,255,0.97);
 }
 
-.registerContainer {
+.loginContainer {
     min-height: 100vh;
     width: 100vw;
     display: flex !important;
@@ -20,7 +20,7 @@
     padding: 0 !important; 
 }
 
-.registerForm {
+.loginForm {
     background: rgba(20, 40, 20, 0.65);
     padding: 0;
     border-radius: 22px;
@@ -69,10 +69,10 @@
     margin: 0 auto;
 }
 
-.registerTitle {
+.loginTitle {
     color: #fff;
     font-size: 2.1rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 800;
     text-align: left;
     letter-spacing: 1px;
@@ -96,7 +96,7 @@
     background: #fff;
 }
 
-.registerButton {
+.loginButton {
     background: var(--primary);
     color: #fff;
     border: none;
@@ -110,7 +110,7 @@
     letter-spacing: 0.5px;
 }
 
-.registerButton:hover {
+.loginButton:hover {
     background: var(--primary-dark);
     transform: translateY(-2px) scale(1.02);
 }
@@ -147,6 +147,30 @@
     padding-right: 55px; 
 }
 
+.registerLink {
+    margin-top: 24px;
+}
+
+.registerLinkText {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.registerLinkButton {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.registerLinkButton:hover {
+    color: var(--primary-dark);
+}
+
 .homeButton {
     position: fixed;
     top: 20px;
@@ -173,8 +197,8 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
-@media (max-width: 991.98px) {
-    .registerForm {
+@media (max-width: 991.98px) { 
+    .loginForm {
         min-width: unset;
         max-width: 90vw;
     }
@@ -183,7 +207,7 @@
         padding: 40px 30px;
     }
     
-    .registerTitle {
+    .loginTitle {
         font-size: 1.8rem;
     }
     
@@ -194,7 +218,7 @@
 }
 
 @media (max-width: 767.98px) { 
-    .registerForm {
+    .loginForm {
         min-width: unset;
         max-width: 95vw;
     }
@@ -203,7 +227,7 @@
         padding: 30px 20px;
     }
     
-    .registerTitle {
+    .loginTitle {
         font-size: 1.5rem;
         text-align: center;
     }
@@ -220,7 +244,7 @@
 }
 
 @media (max-width: 575.98px) { 
-    .registerForm {
+    .loginForm {
         min-width: unset;
         max-width: 98vw;
         margin: 10px;
@@ -230,7 +254,7 @@
         padding: 25px 15px;
     }
     
-    .registerTitle {
+    .loginTitle {
         font-size: 1.3rem;
     }
     
