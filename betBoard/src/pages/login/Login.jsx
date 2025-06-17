@@ -34,8 +34,9 @@ const Login = () => {
             await AuthController.loginUser(formData);
             setSuccess('Login realizado com sucesso!');
             setTimeout(() => {
-                navigate('/dashboard'); // ou onde você quiser redirecionar após login
+                navigate('/dashboard');
             }, 1500);
+
         } catch (err) {
             setError('E-mail ou senha incorretos. Tente novamente.');
         } finally {
