@@ -21,9 +21,9 @@
 
 .registerForm {
     display: flex;
-    flex-direction: row; /* horizontal */
+    flex-direction: row; 
     gap: 0;
-    background: rgba(20, 40, 20, 0.65); /* camada semitransparente escura */
+    background: rgba(20, 40, 20, 0.65);
     padding: 0;
     border-radius: 22px;
     box-shadow: 0 8px 40px rgba(0,0,0,0.18);
@@ -118,6 +118,33 @@
     text-align: left;
     font-size: 1rem;
     margin-top: 4px;
+}
+
+.passwordInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passwordToggleIcon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.18rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.2s;
+}
+
+.passwordToggleIcon:hover {
+    color: var(--primary);
+}
+
+.passwordInputWrapper .inputField {
+    width: 100%;
+    padding-right: 20px; 
 }
 
 @media (max-width: 900px) {

@@ -1,6 +1,7 @@
 import styles from './Register.module.css';
 import { useState } from 'react';
 import AuthController from '../../controllers/authController';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -15,6 +16,55 @@ const Register = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const formatCPF = (value) => {
+        const cleanedValue = value.replace(/\D/g, '');
+        let formattedValue = cleanedValue.replace(/(\d{3})(\d)/, '$1.$2');
+        formattedValue = formattedValue.replace(/(\d{3})(\d)/, '$1.$2');
+        formattedValue = formattedValue.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        return formattedValue;
+    };
+
+    const formatPhone = (value) => {
+        const cleanedValue = value.replace(/\D/g, '');
+        let formattedValue = cleanedValue;
+        if (cleanedValue.length > 10) {
+            formattedValue = cleanedValue.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else {
+            formattedValue = cleanedValue.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+        }
+        return formattedValue;
+    }
+
+    const handlePhoneChange = (e) => {
+        const { value } = e.target;
+        const formattedValue = formatPhone(value);
+        setFormData((prev) => ({
+            ...prev,
+            phone: formattedValue,
+        }));
+        if (formattedValue.length > 15) {
+            e.target.value = formattedValue.slice(0, 15);
+        } else {
+            e.target.value = formattedValue;
+        }
+    }
+
+    const handleCPFChange = (e) => {
+        const { value } = e.target;
+        const formattedValue = formatCPF(value);
+        setFormData((prev) => ({
+            ...prev,
+            cpf: formattedValue,
+        }));
+        if (formattedValue.length > 14) {
+            e.target.value = formattedValue.slice(0, 14);
+        } else {
+            e.target.value = formattedValue;
+        }
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -53,6 +103,14 @@ const Register = () => {
         }
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword((prev) => !prev);
+    };
+
     return (
         <div className={styles.registerContainer}>
             <form className={styles.registerForm} onSubmit={handleSubmit}>
@@ -72,7 +130,7 @@ const Register = () => {
                         placeholder="CPF"
                         className={styles.inputField}
                         value={formData.cpf}
-                        onChange={handleInputChange}
+                        onChange={handleCPFChange}
                         required
                     />
                     <input
@@ -90,26 +148,44 @@ const Register = () => {
                         placeholder="Telefone"
                         className={styles.inputField}
                         value={formData.phone}
-                        onChange={handleInputChange}
+                        onChange={handlePhoneChange}
                     />
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Senha"
-                        className={styles.inputField}
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="confirm_password"
-                        placeholder="Confirme a senha"
-                        className={styles.inputField}
-                        value={formData.confirm_password}
-                        onChange={handleInputChange}
-                        required
-                    />
+                    <div className={styles.passwordInputWrapper}>
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="Senha"
+                            className={styles.inputField}
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <span
+                            className={styles.passwordToggleIcon}
+                            onClick={togglePasswordVisibility}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                    </div>
+                    <div className={styles.passwordInputWrapper}>
+                        <input
+                            type={showConfirmPassword ? "text" : "password"}
+                            name="confirm_password"
+                            placeholder="Confirme a senha"
+                            className={styles.inputField}
+                            value={formData.confirm_password}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <span
+                            className={styles.passwordToggleIcon}
+                            onClick={toggleConfirmPasswordVisibility}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                    </div>
                     {error && <div className={styles.formMessage} style={{ color: '#ff5555' }}>{error}</div>}
                     {success && <div className={styles.formMessage} style={{ color: '#0fbc20' }}>{success}</div>}
                     <button type="submit" className={styles.registerButton} disabled={loading}>

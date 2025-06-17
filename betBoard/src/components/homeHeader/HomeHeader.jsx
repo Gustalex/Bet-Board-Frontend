@@ -27,7 +27,7 @@ const HomeHeader = () => {
     return (
         <div className={styles.homeHeader}>
             <div className={styles.homeHeaderTitle} onClick={handleLogoClick}>
-                <FiTrendingUp size={42} color="#fff" style={{ verticalAlign: 'middle', marginRight: '12px' }} />
+                <FiTrendingUp className={styles.logoIcon} />
                 BetBoard
             </div>
             <div className={styles.headerActions}>
