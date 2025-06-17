@@ -84,9 +84,15 @@ const Register = () => {
             return;
         }
 
+        const cleanData = {
+            ...formData,
+            cpf: formData.cpf.replace(/\D/g, ''),
+            phone: formData.phone.replace(/\D/g, ''),
+        };
+
         setLoading(true);
         try {
-            await AuthController.registerUser(formData);
+            await AuthController.registerUser(cleanData);
             setSuccess('Cadastro realizado com sucesso!');
             setFormData({
                 full_name: '',
